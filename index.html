@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Operators</title>
+        <!--meta-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+            }
+
+            body{
+                font-family: 'Onest', sans-serif;
+                color:#333;
+            }
+
+            .navbar{
+                width:100vw;
+                height:60px;
+                background-color: rgb(29, 117, 158);
+                display:flex;
+                justify-content:space-between;
+                text-align:center;
+                align-items: center;
+                font-size:1.1rem;
+                font-weight:bold;
+                box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+                
+                
+            }
+
+            .navbar ul{
+                display:flex;
+                justify-content:space-evenly;
+            }
+            .navbar li{
+                list-style-type: none;
+            }
+            .navbar ul li a{
+                text-decoration:none;
+                color:#fff;
+                margin-right:30px;
+                font-weight:bold;
+
+            }
+
+            .navbar ul li a:hover{
+                color:#ddd;
+                
+
+            }
+
+            .navbar p{
+                font-size:1.5rem;
+                font-weight:bold;
+                color:#fff;
+                padding-left:20px;
+            }
+
+            .hero{
+                margin:0 auto;
+                text-align:center;
+                justify-content: center;
+               
+                height:300px;
+                padding:30px;
+                margin:50px;
+                border-radius:20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+
+
+            }
+            .hero h1{
+                margin:20px;
+            }
+            .hero p{
+                margin:20px;
+                font-size:1.3rem;
+                color:#888;
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <header class="header" id="home">
+           
+            <!------NAVBAR------->
+            <nav class="navbar">
+                
+                <p>Operators</p>
+                
+                
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            
+        </header>
+
+        <!--hero section-->
+        <section class="hero">
+            <h1>Operators and Strings in Tip Calculator</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quod dolorem vero. Necessitatibus ullam quos amet dolorem nihil exercitationem, quis voluptates, iusto error nemo nobis. Veritatis eaque harum placeat explicabo.</p>
+        </section>
+
+        <!--JavaScript codes-->
+       <script>
+            // Tip Calculator
+
+            let bill = 100;
+            let tipPercent = 10;
+
+            // Arithmetic operators: calculate the tip and total
+            let tip = bill * (tipPercent / 100);
+
+            let total = bill + tip;
+
+            // Split the total between 4 friends using arthimatic operator: /
+            let perPerson = total / 4;
+
+            // Round to two decimal places
+            perPerson = perPerson.toFixed(2);
+
+            // String method: trim() removes extra whitespaces
+            let title = "  Receipt  ".trim();
+
+                //includes() checkes if specific value existin the string
+            let hasBill = title.includes("Receipt");
+
+            // Logical operator  && checks two conditions and returns true only if both sides are true.
+            let valid = bill > 0 && tipPercent >= 0;
+
+            // Print every receipt line in uppercase using toUpperCase()
+            console.log(title.toUpperCase());
+
+            console.log("---------------------------");
+
+            console.log(("Bill: " + bill +" Afg").toUpperCase());
+
+            console.log(("Tip: " + tip.toFixed(2)+" Afg").toUpperCase());
+
+            console.log(("Total: " + total.toFixed(2)+" Afg").toUpperCase());
+
+            console.log(("Friends: 4").toUpperCase());
+
+            console.log(("Per Person: " + perPerson+" Afg").toUpperCase());
+
+            console.log("Valid:", valid);
+            console.log("Has Receipt:", hasBill);
+
+       </script>
+
+
+
+    </body>
+</html>
