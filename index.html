@@ -1,165 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Operators</title>
-        <!--meta-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8" />
+<head>
+    <title>Tip & Delivery Functions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            box-shadow: 0px 5px 7px  rgba(0,0,0,0.3);
+            border-radius: 16px;
+        }
+      
 
-        <style>
-            *{
-                margin:0;
-                padding:0;
-                box-sizing:border-box;
-            }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
 
-            body{
-                font-family: 'Onest', sans-serif;
-                color:#333;
-            }
+        h2 {
+            font-size: 1.1rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #1e75a0;
+        }
 
-            .navbar{
-                width:100vw;
-                height:60px;
-                background-color: rgb(29, 117, 158);
-                display:flex;
-                justify-content:space-between;
-                text-align:center;
-                align-items: center;
-                font-size:1.1rem;
-                font-weight:bold;
-                box-shadow: 0 2px 3px rgba(0,0,0,0.3);
-                
-                
-            }
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
 
-            .navbar ul{
-                display:flex;
-                justify-content:space-evenly;
-            }
-            .navbar li{
-                list-style-type: none;
-            }
-            .navbar ul li a{
-                text-decoration:none;
-                color:#fff;
-                margin-right:30px;
-                font-weight:bold;
+    </style>
+</head>
+<body>
+  <div>
+    <h1>Tip & Delivery Functions</h1>
 
-            }
+    <h2>calculateTip(bill, percent)</h2>
+    <pre id="tipOutput"></pre>
 
-            .navbar ul li a:hover{
-                color:#ddd;
-                
+    <h2>getDeliveryFee(total, city)</h2>
+    <pre id="deliveryOutput"></pre>
 
-            }
+  </div>
+    
 
-            .navbar p{
-                font-size:1.5rem;
-                font-weight:bold;
-                color:#fff;
-                padding-left:20px;
-            }
+    <script>
+        // ---------- Functions ----------
 
-            .hero{
-                margin:0 auto;
-                text-align:center;
-                justify-content: center;
-               
-                height:300px;
-                padding:30px;
-                margin:50px;
-                border-radius:20px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        function calculateTip(bill, percent) {
+            const tip = bill * (percent / 100);
+            return Number(tip.toFixed(2));
+        }
 
+        function getDeliveryFee(total, city) {
+            if (total > 200)
+                return 0;
 
-            }
-            .hero h1{
-                margin:20px;
-            }
-            .hero p{
-                margin:20px;
-                font-size:1.3rem;
-                color:#888;
-            }
+            const c = city.trim().toLowerCase();
 
-        </style>
+            if (c === 'kabul')
+                return 5.00;
+            if (c === 'herat') 
+                return 8.00;
+            if (c === 'mazar' || c === 'mazar-e-sharif') 
+                return 3.00;
+            return 6.00;
+        }
 
-    </head>
-    <body>
+        // ---------- Call each function 3 times ----------
 
-        <header class="header" id="home">
-           
-            <!------NAVBAR------->
-            <nav class="navbar">
-                
-                <p>Operators</p>
-                
-                
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            
-            
-        </header>
+        const tip1 = calculateTip(100, 10);
+        const tip2 = calculateTip(45.50, 18);
+        const tip3 = calculateTip(230, 7.5);
 
-        <!--hero section-->
-        <section class="hero">
-            <h1>Operators and Strings in Tip Calculator</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quod dolorem vero. Necessitatibus ullam quos amet dolorem nihil exercitationem, quis voluptates, iusto error nemo nobis. Veritatis eaque harum placeat explicabo.</p>
-        </section>
+        const fee1 = getDeliveryFee(25, 'Kabul');
+        const fee2 = getDeliveryFee(120, 'Herat');
+        const fee3 = getDeliveryFee(8, 'Mazar');
 
-        <!--JavaScript codes-->
-       <script>
-            // Tip Calculator
+        // ---------- Log to console ----------
 
-            let bill = 100;
-            let tipPercent = 10;
+        console.log('--- calculateTip ---');
+        console.log('calculateTip(100, 10)   =', tip1);
+        console.log('calculateTip(45.50, 18) =', tip2);
+        console.log('calculateTip(230, 7.5)  =', tip3);
 
-            // Arithmetic operators: calculate the tip and total
-            let tip = bill * (tipPercent / 100);
+        console.log('--- getDeliveryFee ---');
+        console.log('getDeliveryFee(25, "Kabul")  =', fee1);
+        console.log('getDeliveryFee(120, "Herat") =', fee2);
+        console.log('getDeliveryFee(8, "Mazar")   =', fee3);
 
-            let total = bill + tip;
+        // ---------- Show output on the page ----------
 
-            // Split the total between 4 friends using arthimatic operator: /
-            let perPerson = total / 4;
+        document.getElementById('tipOutput').textContent =
+            `calculateTip(100, 10)   = ${tip1}\n` +
+            `calculateTip(45.50, 18) = ${tip2}\n` +
+            `calculateTip(230, 7.5)  = ${tip3}`;
 
-            // Round to two decimal places
-            perPerson = perPerson.toFixed(2);
-
-            // String method: trim() removes extra whitespaces
-            let title = "  Receipt  ".trim();
-
-                //includes() checkes if specific value existin the string
-            let hasBill = title.includes("Receipt");
-
-            // Logical operator  && checks two conditions and returns true only if both sides are true.
-            let valid = bill > 0 && tipPercent >= 0;
-
-            // Print every receipt line in uppercase using toUpperCase()
-            console.log(title.toUpperCase());
-
-            console.log("---------------------------");
-
-            console.log(("Bill: " + bill +" Afg").toUpperCase());
-
-            console.log(("Tip: " + tip.toFixed(2)+" Afg").toUpperCase());
-
-            console.log(("Total: " + total.toFixed(2)+" Afg").toUpperCase());
-
-            console.log(("Friends: 4").toUpperCase());
-
-            console.log(("Per Person: " + perPerson+" Afg").toUpperCase());
-
-            console.log("Valid:", valid);
-            console.log("Has Receipt:", hasBill);
-
-       </script>
-
-
-
-    </body>
+        document.getElementById('deliveryOutput').textContent =
+            `getDeliveryFee(25, "Kabul")  = ${fee1}\n` +
+            `getDeliveryFee(120, "Herat") = ${fee2}\n` +
+            `getDeliveryFee(8, "Mazar")   = ${fee3}`;
+    </script>
+</body>
 </html>
